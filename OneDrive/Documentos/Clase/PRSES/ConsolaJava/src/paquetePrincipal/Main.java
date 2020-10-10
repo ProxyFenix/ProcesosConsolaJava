@@ -29,7 +29,7 @@ public class Main {
 		Scanner sc = new Scanner(System.in);
 		// Introducimos la opción que queramos	en este Do do raro
 		/*
-		 * De do do do, de da da da
+		 * 	De do do do, de da da da
 			Is all I want to say to you
 			De do do do, de da da da
 			They're meaningless and all that's true	
@@ -177,7 +177,7 @@ public class Main {
 				proceso(comando);
 			}
 			else {
-				String comando = "bash -c nslookup `" + interfaz + "`" ;
+				String comando = "bash -c nslookup " + interfaz;
 				proceso(comando);
 			}
 	}
