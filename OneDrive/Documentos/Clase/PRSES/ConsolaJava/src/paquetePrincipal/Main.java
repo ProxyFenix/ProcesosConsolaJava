@@ -177,7 +177,7 @@ public class Main {
 				proceso(comando);
 			}
 			else {
-				String comando = "bash -c nslookup " + interfaz;
+				String comando = "bash -c ifconfig " + interfaz;
 				proceso(comando);
 			}
 	}
