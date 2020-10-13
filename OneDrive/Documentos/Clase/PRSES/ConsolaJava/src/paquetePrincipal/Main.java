@@ -13,21 +13,21 @@ public class Main {
 		
 		
 		System.out.println("Bienvenidos al CMD del misterio" + "\n"
-		+ "Por favor, introduce la opción que te interese usar:" + "\n");
+		+ "Por favor, introduce la opciÃ³n que te interese usar:" + "\n");
 		System.out.println(
 				"1) Crear una carpeta dada una ruta y un nombre" + "\n" +
 				"2) Crear un fichero dada una ruta y un nombre" + "\n" +
 				"3) Listar interfaces disponibles" + "\n" +
 				"4) Mostrar la IP del ordenador dado el nombre de la interfaz de red" + "\n" +
-				"5) Mostrar la dirección MAC dado el nombre de la interfaz de red" + "\n" +
+				"5) Mostrar la direcciÃ³n MAC dado el nombre de la interfaz de red" + "\n" +
 				"6) Comprobar conectividad con internet" + "\n" +
 				"7) Salir" + "\n");
 		
 		
 		int numero;
-		// Definimos un scanner para leer la opción
+		// Definimos un scanner para leer la opciÃ³n
 		Scanner sc = new Scanner(System.in);
-		// Introducimos la opción que queramos	en este Do do raro
+		// Introducimos la opciÃ³n que queramos	en este Do do raro
 		/*
 		 * 	De do do do, de da da da
 			Is all I want to say to you
@@ -44,27 +44,21 @@ public class Main {
 				switch(numero) {
 				case 1:
 					crearCarpeta();
-					System.out.println("¿Desea hacer algo más?");
 					break;
 				case 2:
 					crearFichero();
-					System.out.println("¿Desea hacer algo más?");
 					break;
 				case 3:
 					listarInterfaces();
-					System.out.println("¿Desea hacer algo más?");
 					break;
 				case 4:
 					mostrarIPs();
-					System.out.println("¿Desea hacer algo más?");
 					break;
 				case 5:
 					mostrarMAC();
-					System.out.println("¿Desea hacer algo más?");
 					break;
 				case 6:
 					comprobarConexion();
-					System.out.println("¿Desea hacer algo más?");
 					break;
 				case 7:
 					System.out.println("Ha cerrado usted el programa");
@@ -73,11 +67,11 @@ public class Main {
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
-					System.out.println("Hasta luego, pase usted buen día/tarde/noche");
+					System.out.println("Hasta luego, pase usted buen dÃ­a/tarde/noche");
 					System.exit(0);
 					break;
 				}
-				
+				System.out.println("Â¿Desea hacer algo mÃ¡s?");
 			
 			} while (numero < 1 || numero > 7);
 		} while (numero != 7);
@@ -85,7 +79,7 @@ public class Main {
 		
 			
 		
-//		// Este es el código que usaremos para ver si andamios por Windows o por Unix/Linux
+//		// Este es el cÃ³digo que usaremos para ver si andamios por Windows o por Unix/Linux
 //		if (System.getProperty("os.name").startsWith("Windows")) {
 //	        // Esto es si es Windows
 //			
@@ -97,14 +91,12 @@ public class Main {
 
 	}
 	
-	// Y aquí, los metodos
+	// Y aquÃ­, los metodos
 	
 	private static void crearCarpeta() throws IOException, InterruptedException {
-		if (System.getProperty("os.name").startsWith("Windows")) {
-	        // Esto es si es Windows
 			Scanner sc = new Scanner(System.in);
 			System.out.println("Introduce la ruta donde quieras crear la carpeta, vaquero.");
-			System.out.println("Acto seguido, escribe cómo quieres llamarla.");
+			System.out.println("Acto seguido, escribe cÃ³mo quieres llamarla.");
 			String ruta;
 			String nombreCarpeta;
 			do {
@@ -119,7 +111,7 @@ public class Main {
 				String comando = "bash " + "cd " + ruta + " || mkdir " + nombreCarpeta;
 				proceso(comando);
 			}
-		}
+		
 	}
 	
 	private static boolean checkRuta(String ruta) {
@@ -127,11 +119,9 @@ public class Main {
 	}
 
 	private static void crearFichero() throws IOException, InterruptedException {
-		if (System.getProperty("os.name").startsWith("Windows")) {
-	        // Esto es si es Windows
 			Scanner sc = new Scanner(System.in);
 			System.out.println("Introduce la ruta donde quieras crear el archivo, vaquero.");
-			System.out.println("Acto seguido, escribe cómo quieres llamarlo, junto con su extensión.");
+			System.out.println("Acto seguido, escribe cÃ³mo quieres llamarlo, junto con su extensiÃ³n.");
 			System.out.println("Ejemplo: " + "archivo.txt");
 			String ruta;
 			String nombreFichero;
@@ -148,7 +138,7 @@ public class Main {
 				String comando = "bash " + " cd " + ruta + " touch " + nombreFichero;
 				proceso(comando);
 			}
-		}
+		
 		
 
 	}
@@ -166,7 +156,6 @@ public class Main {
 	}
 	
 	private static void mostrarIPs() throws IOException, InterruptedException {
-	        // Esto es si es Windows
 			Scanner sc = new Scanner(System.in);
 			System.out.println("Introduce el nombre de la interfaz de red: ");
 			String interfaz;
@@ -192,10 +181,10 @@ public class Main {
 	        // Esto es si es Windows
 			String comando = "cmd.exe /c wmic nic get Name, MACAddress | findstr \""+ adaptador + "\"";
 			proceso(comando);
-	    } else {
+	    	} else {
 	        // Esto para literalmente cualquier cosa, en nuestro caso, unix
-	    	String comando = "ip -o link | grep " + adaptador + "";
-	    	proceso(comando);
+			String comando = "ip -o link | grep " + adaptador + "";
+			proceso(comando);
 	    } 
 	}
 	
@@ -203,7 +192,7 @@ public class Main {
 		
 		Scanner sc = new Scanner(System.in);
 		String ip;
-		System.out.println("Introduce la dirección a comprobar, ya sea en formato X.X.X.X o en nombre del dominio (google.com): ");
+		System.out.println("Introduce la direcciÃ³n a comprobar, ya sea en formato X.X.X.X o en nombre del dominio (google.com): ");
 		ip = sc.nextLine();
 		
 		if (System.getProperty("os.name").startsWith("Windows")) {
@@ -213,12 +202,12 @@ public class Main {
 				proceso(comando);
 			} catch (IOException | InterruptedException e) {}
 			
-	    } else {
+	    	} else {
 	        // Esto para literalmente cualquier cosa, en nuestro caso, unix
-	    	String comando = "bash -c ping " + ip;
-			try {
-				proceso(comando);
-			} catch (IOException | InterruptedException e) {}
+			String comando = "bash -c ping " + ip;
+				try {
+					proceso(comando);
+				} catch (IOException | InterruptedException e) {}
 	    } 
 	}
 	
@@ -226,7 +215,7 @@ public class Main {
 		
 		ProcessBuilder processBuilder = new ProcessBuilder();
 					//Nos preparamos para leer lo que metan en consola 
-		// Creamos el creaProcesos, creé un proceso para crear procesos, curioso
+		// Creamos el creaProcesos, creÃ© un proceso para crear procesos, curioso
 					
 
 			
@@ -244,7 +233,7 @@ public class Main {
 
 					if (process.waitFor() == 0) {
 						System.out.println(buffer);
-						System.out.println("Coño, ha funcionado. El comando ha sido: " + comando);
+						System.out.println("CoÃ±o, ha funcionado. El comando ha sido: " + comando);
 					} else {
 						System.out.println("La liaste vaquero...");
 					}
